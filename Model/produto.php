@@ -21,7 +21,7 @@ class produto
 		}
 	}
 
-	public function SelectTodos()
+	public function ListarTodos()
 	{
 		try
 		{
@@ -80,9 +80,9 @@ class produto
 			$this->pdo->prepare($sql)
 			     ->execute(
 				    array(
-                        $data->nome,
-                        $data->marca,
-                        $data->valor
+                        $this->nome,
+                        $this->marca,
+                        $this->valor
 					)
 				);
 		} catch (Exception $e)
@@ -91,19 +91,20 @@ class produto
 		}
 	}
 
-	public function Cadastrar(produto $data)
+	//public function Cadastrar(produto $data)
+	public function Cadastrar()	
 	{
 		try
 		{
-		$sql = "INSERT INTO produto (nome, marca, valor)
+		$sql = "INSERT INTO produto (nome, fk_marca, valor)
 		        VALUES (?, ?, ?)";
 
 		$this->pdo->prepare($sql)
 		     ->execute(
 				array(
-					$data->nome,
-                    $data->marca,
-                    $data->valor
+					$this->nome,
+                    $this->marca,
+                    $this->valor
                 )
 			);
 		} catch (Exception $e)

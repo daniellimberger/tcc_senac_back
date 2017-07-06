@@ -12,7 +12,9 @@ switch ( $function ){
     $retorno = $produtoController->listar_todos();
     break;
   case 'cadastrar':
+   // $dados = $_GET['dados'];
     $retorno = $produtoController->cadastrar();
+    echo $retorno;
     break;
 }
 
@@ -35,25 +37,27 @@ class ProdutoController{
 
         $obj = json_decode(file_get_contents('php://input'));
 
-        $empresa                        = $obj->empresa;
+
+         $nome                          = $obj->nome;
+        $marca                          = $obj->marca;
         $valor                          = $obj->valor;
 
-        $prod = new producto();
+        $prod = new produto();
         // instanciando classe da model
 
         // inserindo dados no atributo da classe da model $prod->empresa
-        $prod->empresa = $empresa;
+        $prod->nome = $nome;
+        $prod->marca = $marca;
         $prod->valor = $valor;
 
 
-        $this->model->Cadastrar($prod);
+        $prod->Cadastrar();
 
-        return "alguma mensagem";
     }
     
     public function listar_todos(){
 
-       $dados = $this->model->SelectTodos();
+       $dados = $this->model->ListarTodos();
 
        return  json_encode($dados);
     }    
