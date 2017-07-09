@@ -12,10 +12,13 @@ switch ( $function ){
     $retorno = $produtoController->listar_todos();
     break;
   case 'cadastrar':
-   // $dados = $_GET['dados'];
     $retorno = $produtoController->cadastrar();
     echo $retorno;
     break;
+   case 'deletar':
+    $retorno = $produtoController->deletar();
+    echo $retorno;   
+    
 }
 
 echo $retorno;
@@ -36,7 +39,6 @@ class ProdutoController{
     public function cadastrar(){
 
         $obj = json_decode(file_get_contents('php://input'));
-
 
          $nome                          = $obj->nome;
         $marca                          = $obj->marca;
@@ -61,5 +63,16 @@ class ProdutoController{
 
        return  json_encode($dados);
     }    
+
+    public function deletar(){
+
+        $obj = json_decode(file_get_contents('php://input'));
+
+         $id_deletar          = $obj->id_deletar;      
+
+       $dados = $this->model->Deletar($id_deletar);
+
+       return  json_encode($dados);
+    }        
 
 }

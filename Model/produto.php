@@ -27,8 +27,8 @@ class produto
 		{
 			$result = array();
 
-			$stm = $this->pdo->prepare("SELECT p.nome as nome_produto, pm.nome as nome_marca, p.valor as valor_produto FROM produto p
-										INNER JOIN produto_marca pm ON pm.id = p.fk_marca
+			$stm = $this->pdo->prepare("SELECT p.id as id_produto, p.nome as nome_produto, pm.nome as nome_marca, p.valor as valor_produto FROM produto p
+										INNER JOIN produto_marca pm ON pm.id = p.fk_marca ORDER BY nome_produto asc
 										");
 			$stm->execute();
 
@@ -53,14 +53,14 @@ class produto
 		}
 	}
 
-	public function Deletar($id)
+	public function Deletar($id_deletar)
 	{
 		try
 		{
 			$stm = $this->pdo
-			            ->prepare("DELETE FROM produco WHERE id = ?");
+			            ->prepare("DELETE FROM produto WHERE id = ?");
 
-			$stm->execute(array($id));
+			$stm->execute(array($id_deletar));
 		} catch (Exception $e)
 		{
 			die($e->getMessage());
