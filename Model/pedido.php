@@ -96,7 +96,7 @@ class pedido
 
 
 
-	public function ListarTodos_PedidoItem()
+	public function ListarTodos_PedidoItem($nro_pedido)
 	{
 		try
 		{
@@ -109,7 +109,7 @@ class pedido
 										pi.valor_unitario_total as item_valor_unitario_total 
 										FROM pedido_item pi
 										INNER JOIN produto p ON pi.id_produto = p.id
-										WHERE pi.id_pedido = '38'
+										WHERE pi.id_pedido = '$nro_pedido'
 
 
 				");

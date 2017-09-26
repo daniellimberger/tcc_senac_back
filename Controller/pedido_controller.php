@@ -113,6 +113,8 @@ class PedidoController{
         //return $return;
         echo $return;
 
+        
+
     }    
 
     public function deletar_pedido_item(){
@@ -126,23 +128,6 @@ class PedidoController{
        return  json_encode($id_deletar);
     }   
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     
     public function listar_todos(){
 
@@ -153,21 +138,14 @@ class PedidoController{
 
 
     public function listar_todos_pedidoItem(){
+      $obj = json_decode(file_get_contents('php://input'));
 
-       $dados = $this->model->ListarTodos_PedidoItem();
+      $nro_pedido  = $obj->nro_pedido;
 
-       return  json_encode($dados);
+      $dados = $this->model->ListarTodos_PedidoItem($nro_pedido);
+
+      return  json_encode($dados);
     }       
-
-
-
-
-
-
-
-
-
-
 
 
     public function deletar(){
