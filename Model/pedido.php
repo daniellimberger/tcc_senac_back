@@ -82,7 +82,6 @@ class pedido
 
 	
 			$last_id = $this->pdo->lastInsertId();
-			//return $last_id;
 			echo $last_id;
 
 

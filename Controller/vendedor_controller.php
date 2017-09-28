@@ -7,6 +7,7 @@ $vendedorController = new VendedorController();
 
 $function = $_GET['function'];
 
+// usar switch melhora a performance pois o sistema nao entra em todas as possibilidades, diferente do if
 switch ( $function ){
   case 'listar_todos':
     $retorno = $vendedorController->listar_todos();
@@ -54,7 +55,7 @@ class VendedorController{
         $vend = new vendedor();
         // instanciando classe da model
 
-        // inserindo dados no atributo da classe da model $prod->empresa
+        // inserindo dados no atributo da classe da model
         $vend->nome = $nome;
         $vend->sobrenome = $sobrenome;
         $vend->rg = $rg;

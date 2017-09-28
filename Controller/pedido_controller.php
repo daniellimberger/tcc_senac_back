@@ -70,7 +70,7 @@ class PedidoController{
         $pedido = new pedido();
         // instanciando classe da model
 
-        // inserindo dados no atributo da classe da model $prod->empresa
+        // inserindo dados no atributo da classe da model
         $pedido->idCliente = $idCliente;
         $pedido->idVendedor = $idVendedor;
         $pedido->dataPedido = $dataPedido;
@@ -79,7 +79,6 @@ class PedidoController{
 
         $return = $pedido->Cadastrar();
 
-        //return $return;
         echo $return;
 
     }
@@ -101,7 +100,7 @@ class PedidoController{
         $pedido = new pedido();
         // instanciando classe da model
 
-        // inserindo dados no atributo da classe da model $prod->empresa
+        // inserindo dados no atributo da classe da model
         $pedido->item_nro_pedido = $nro_pedido;
         $pedido->item_idProduto = $idProduto;
         $pedido->item_qtdItem = $qtdItem;
@@ -110,7 +109,6 @@ class PedidoController{
 
         $return = $pedido->CadastrarItem();
 
-        //return $return;
         echo $return;
 
         

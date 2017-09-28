@@ -147,7 +147,6 @@ class cliente
 			);
 		} catch (Exception $e)
 		{
-			//die($e->getMessage());
 			return $sql;
 		}
 	}

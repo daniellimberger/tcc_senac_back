@@ -149,7 +149,6 @@ class vendedor
 			);
 		} catch (Exception $e)
 		{
-			//die($e->getMessage());
 			return $sql;
 		}
 	}

@@ -91,7 +91,6 @@ class produto
 		}
 	}
 
-	//public function Cadastrar(produto $data)
 	public function Cadastrar()	
 	{
 		try

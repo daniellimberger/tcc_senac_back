@@ -7,6 +7,7 @@ $clienteController = new ClienteController();
 
 $function = $_GET['function'];
 
+// usar switch melhora a performance pois o sistema nao entra em todas as possibilidades, diferente do if
 switch ( $function ){
   case 'listar_todos':
     $retorno = $clienteController->listar_todos();
@@ -22,8 +23,7 @@ switch ( $function ){
   case 'listar_um':
     $id_listar = $_GET['id_listar'];
     $retorno = $clienteController->listar_um($id_listar);
-   //echo $retorno;  
-   // echo $id_listar;
+
     break;
 }
 
@@ -60,7 +60,7 @@ class ClienteController{
         $cli = new cliente();
         // instanciando classe da model
 
-        // inserindo dados no atributo da classe da model $prod->empresa
+        // inserindo dados no atributo da classe da model
         $cli->nomeFantasia = $nomeFantasia;
         $cli->razaoSocial = $razaoSocial;
         $cli->cnpj = $cnpj;
