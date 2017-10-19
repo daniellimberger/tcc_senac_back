@@ -8,8 +8,8 @@ $pedidoController = new PedidoController();
 $function = $_GET['function'];
 
 switch ( $function ){
-  case 'listar_todos':
-    $retorno = $pedidoController->listar_todos();
+  case 'listar_todos_pedido':
+    $retorno = $pedidoController->listar_todos_pedido();
     break;
 
   case 'listar_todos_pedidoItem':
@@ -127,9 +127,9 @@ class PedidoController{
     }   
 
     
-    public function listar_todos(){
+    public function listar_todos_pedido(){
 
-       $dados = $this->model->ListarTodos();
+       $dados = $this->model->ListarTodosPedido();
 
        return  json_encode($dados);
     }    

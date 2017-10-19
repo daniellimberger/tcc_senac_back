@@ -9,6 +9,9 @@ $function = $_GET['function'];
 
 // usar switch melhora a performance pois o sistema nao entra em todas as possibilidades, diferente do if
 switch ( $function ){
+  case 'listar_todos_pedido':
+    $retorno = $produtoController->listar_todos_pedido();
+    break;
   case 'listar_todos':
     $retorno = $produtoController->listar_todos();
     break;
@@ -19,7 +22,6 @@ switch ( $function ){
    case 'deletar':
     $retorno = $produtoController->deletar();
     echo $retorno;   
-    
 }
 echo $retorno;
 
@@ -59,6 +61,13 @@ class ProdutoController{
 
        return  json_encode($dados);
     }    
+
+    public function listar_todos_pedido(){
+
+       $dados = $this->model->ListarTodosPedido();
+
+       return  json_encode($dados);
+    }        
 
     public function deletar(){
 

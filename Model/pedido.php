@@ -95,6 +95,36 @@ class pedido
 
 
 
+
+
+	public function ListarTodosPedido()
+	{
+		try
+		{
+			$result = array();
+
+			$stm = $this->pdo->prepare("SELECT p.id AS pedido_id, c.nome_fantasia AS cliente_nome, v.nome AS vendedor_nome, p.data_pedido AS pedido_datapedido, p.data_previsao_entrega AS pedido_dataprevisaoentrega, p.valor_total AS pedido_valortotal FROM pedido p
+										INNER JOIN cliente c ON c.id = p.fk_cliente
+										INNER JOIN vendedor v ON v.id = p.fk_vendedor");
+			$stm->execute();
+
+			return $stm->fetchAll(PDO::FETCH_OBJ);
+		}
+		catch(Exception $e)
+		{
+			die($e->getMessage());
+		}
+	}
+
+
+
+
+
+
+
+
+
+
 	public function ListarTodos_PedidoItem($nro_pedido)
 	{
 		try
