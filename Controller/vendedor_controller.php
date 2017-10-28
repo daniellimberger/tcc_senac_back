@@ -19,7 +19,14 @@ switch ( $function ){
    case 'deletar':
     $retorno = $vendedorController->deletar();
     echo $retorno;   
-    
+  case 'editar':
+    $retorno = $vendedorController->editar();
+    return $retorno;  
+    break;        
+    case 'listar_um':
+    $id_listar = $_GET['id_listar'];
+    $retorno = $vendedorController->listar_um($id_listar);
+    break;    
 }
 
 echo $retorno;
@@ -78,6 +85,56 @@ class VendedorController{
 
     }
     
+
+
+
+    public function editar(){
+
+        $obj = json_decode(file_get_contents('php://input'));
+
+
+
+        $nome             = $obj->nome;
+        $sobrenome        = $obj->sobrenome;
+        $rg               = $obj->rg;
+        $cpf              = $obj->cpf;
+        $telefoneFixo     = $obj->telefoneFixo;             
+        $telefoneCelular  = $obj->telefoneCelular;
+        $endereco         = $obj->endereco;
+        $bairro           = $obj->bairro;
+        $cidade           = $obj->cidade;
+        $cep              = $obj->cep;
+        $uf               = $obj->uf;
+        $dataCadastro     = $obj->dataCadastro;
+        $observacao       = $obj->observacao;
+        $id_editar        = $obj->id_editar;
+
+        $vend = new vendedor();
+        // instanciando classe da model
+
+        // inserindo dados no atributo da classe da model
+        $vend->nome = $nome;
+        $vend->sobrenome = $sobrenome;
+        $vend->rg = $rg;
+        $vend->cpf = $cpf;
+        $vend->telefoneFixo = $telefoneFixo;
+        $vend->telefoneCelular = $telefoneCelular;
+        $vend->endereco = $endereco;
+        $vend->bairro = $bairro;
+        $vend->cidade = $cidade; 
+        $vend->cep = $cep;
+        $vend->uf = $uf;
+        $vend->dataCadastro = $dataCadastro; 
+        $vend->observacao = $observacao;     
+
+        $vend->Editar($id_editar);
+
+        return $vend;
+
+    }
+
+
+
     public function listar_todos(){
 
        $dados = $this->model->ListarTodos();
@@ -94,6 +151,14 @@ class VendedorController{
        $dados = $this->model->Deletar($id_deletar);
 
        return  json_encode($dados);
-    }        
+    }
+
+
+    public function listar_um($id_listar){
+
+       $dados = $this->model->ListarUm($id_listar);
+
+        return  json_encode($dados);
+    }   
 
 }

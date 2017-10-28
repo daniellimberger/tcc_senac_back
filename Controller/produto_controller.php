@@ -19,9 +19,19 @@ switch ( $function ){
     $retorno = $produtoController->cadastrar();
     echo $retorno;
     break;
-   case 'deletar':
+  case 'deletar':
     $retorno = $produtoController->deletar();
-    echo $retorno;   
+    echo $retorno;  
+  case 'editar':
+    $retorno = $produtoController->editar();
+    return $retorno;  
+    break; 
+  case 'listar_um':
+    $id_listar = $_GET['id_listar'];
+    $retorno = $produtoController->listar_um($id_listar);
+
+    break;
+
 }
 echo $retorno;
 
@@ -54,6 +64,31 @@ class ProdutoController{
         $prod->Cadastrar();
 
     }
+
+    public function editar(){
+
+        $obj = json_decode(file_get_contents('php://input'));
+
+        $nome    = $obj->nome;
+        $marca   = $obj->marca;
+        $valor   = $obj->valor;
+        $id_editar     = $obj->id_editar;
+        
+
+        $prod = new produto();
+        // instanciando classe da model
+
+        // inserindo dados no atributo da classe da model
+        $prod->nome = $nome;
+        $prod->marca = $marca;
+        $prod->valor = $valor;
+        $prod->id_editar = $id_editar;
+
+        $prod->Editar($id_editar);
+
+        return $prod;
+
+    }    
     
     public function listar_todos(){
 
@@ -79,5 +114,13 @@ class ProdutoController{
 
        return  json_encode($dados);
     }        
+
+    public function listar_um($id_listar){
+
+       $dados = $this->model->ListarUm($id_listar);
+
+       return  json_encode($dados);
+
+    }          
 
 }

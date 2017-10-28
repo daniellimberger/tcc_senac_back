@@ -8,6 +8,7 @@ class pedido
 	public $dataPedido;
 	public $dataPrevisaoEntrega;
 	public $valorTotal;
+	
 
     public $item_nro_pedido;
 	public $item_idProduto;

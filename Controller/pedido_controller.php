@@ -31,8 +31,6 @@ switch ( $function ){
     $retorno = $pedidoController->cadastrar_item();
     echo $retorno;
     break;
-
-
   case 'deletar':
     $retorno = $pedidoController->deletar();
     echo $retorno;  
@@ -43,6 +41,14 @@ switch ( $function ){
    //echo $retorno;  
    // echo $id_listar;
     break;
+  case 'enviar_pedido':
+    $retorno = $pedidoController->enviar_pedido();
+    echo $retorno;  
+    break;    
+
+
+
+
 }
 
 echo $retorno;
@@ -165,5 +171,42 @@ class PedidoController{
        return  json_encode($dados);
 
     }                
+
+
+    public function enviar_pedido(){
+
+        $obj = json_decode(file_get_contents('php://input'));
+
+       // $html_pedido = $obj->html_pedido;   
+       
+         $html_pedido = "<b> oioi </b>";  
+
+/*
+$headers = "MIME-Version: 1.1\r\n";
+$headers .= "Content-type: text/plain; charset=UTF-8\r\n";
+$headers .= "From: ligiano@ligiano.info\r\n"; // remetente
+$headers .= "Return-Path: ligiano@ligiano.info\r\n"; // return-path
+$retorno = mail("ldaazzi@gmail.com", "Assunto", "Texto", $headers);
+*/
+
+$message = "Testando outros remetentes, para facilitar a resposta";
+$headers = 'From: ligiano@ligiano.info';// <- O e-mail que está configurado no .htaccess
+$headers = 'Date:'.date('r');
+
+if ( mail('ldaazzi@gmail.com', 'Teste', $message, $headers) ){
+
+   $retorno = "Funcionou";
+
+}else{
+
+$retorno = "nao Funcionou";
+
+}
+ 
+
+        return  json_encode($retorno);
+
+    }
+
 
 }

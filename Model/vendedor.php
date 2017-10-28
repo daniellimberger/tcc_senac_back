@@ -54,7 +54,7 @@ class vendedor
 	{
 		try
 		{
-			$stm = $this->pdo->prepare("SELECT * FROM vendedor WHERE id = ?");
+			$stm = $this->pdo->prepare("SELECT id as id_vendedor, vendedor.* FROM vendedor WHERE id = ?");
 			$stm->execute(array($id));
 			return $stm->fetch(PDO::FETCH_OBJ);
 		} catch (Exception $e)
@@ -77,7 +77,7 @@ class vendedor
 		}
 	}
 
-	public function Editar($data)
+	public function Editar($id_editar)
 	{
 		try
 		{
@@ -112,7 +112,8 @@ class vendedor
 					$this->cep,
                     $this->uf,
 					$this->dataCadastro,
-                    $this->observacao
+                    $this->observacao,
+                    $id_editar
 					)
 				);
 		} catch (Exception $e)

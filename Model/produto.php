@@ -44,7 +44,10 @@ class produto
 	{
 		try
 		{
-			$stm = $this->pdo->prepare("SELECT * FROM produto WHERE id = ?");
+			$stm = $this->pdo->prepare("SELECT produto.id as id_produto, produto.*, pm.id as marca FROM produto 
+										INNER JOIN produto_marca pm ON produto.fk_marca = pm.id
+										WHERE produto.id = ?
+									   ");
 			$stm->execute(array($id));
 			return $stm->fetch(PDO::FETCH_OBJ);
 		} catch (Exception $e)
@@ -67,13 +70,13 @@ class produto
 		}
 	}
 
-	public function Editar($data)
+	public function Editar($id_editar)
 	{
 		try
 		{
 			$sql = "UPDATE produto SET
 						nome         = ?,
-						marca        = ?,
+						fk_marca        = ?,
             			valor        = ?
 				    WHERE id = ?";
 
@@ -82,7 +85,8 @@ class produto
 				    array(
                         $this->nome,
                         $this->marca,
-                        $this->valor
+                        $this->valor,
+                        $id_editar
 					)
 				);
 		} catch (Exception $e)

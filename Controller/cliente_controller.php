@@ -20,6 +20,10 @@ switch ( $function ){
     $retorno = $clienteController->deletar();
     echo $retorno;  
     break;
+  case 'editar':
+    $retorno = $clienteController->editar();
+    return $retorno;  
+    break;    
   case 'listar_um':
     $id_listar = $_GET['id_listar'];
     $retorno = $clienteController->listar_um($id_listar);
@@ -82,6 +86,57 @@ class ClienteController{
         return $cli;
 
     }
+
+
+
+    public function editar(){
+
+        $obj = json_decode(file_get_contents('php://input'));
+
+        $nomeFantasia  = $obj->nomeFantasia;
+        $razaoSocial   = $obj->razaoSocial;
+        $cnpj          = $obj->cnpj;
+        $inscEstadual  = $obj->inscEstadual;
+        $endereco      = $obj->endereco;
+        $bairro        = $obj->bairro;
+        $cidade        = $obj->cidade;
+        $cep           = $obj->cep;
+        $uf            = $obj->uf;
+        $telefoneFixo  = $obj->telefoneFixo;             
+        $dataCadastro  = $obj->dataCadastro;
+        $dataCadastroExtendida  = $obj->dataCadastroExtendida;
+        $observacao    = $obj->observacao;
+        $id_editar     = $obj->id_editar;
+
+
+
+        $cli = new cliente();
+        // instanciando classe da model
+
+        // inserindo dados no atributo da classe da model
+        $cli->nomeFantasia = $nomeFantasia;
+        $cli->razaoSocial = $razaoSocial;
+        $cli->cnpj = $cnpj;
+        $cli->inscEstadual = $inscEstadual;
+        $cli->endereco = $endereco;
+        $cli->bairro = $bairro;
+        $cli->cidade = $cidade; 
+        $cli->cep = $cep;
+        $cli->uf = $uf;
+        $cli->telefoneFixo = $telefoneFixo;
+        $cli->dataCadastro = $dataCadastro; 
+        $cli->dataCadastroExtendida = $dataCadastroExtendida;
+        $cli->observacao = $observacao;
+
+
+
+        $cli->Editar($id_editar);
+
+        return $cli;
+
+    }
+
+
     
     public function listar_todos(){
 

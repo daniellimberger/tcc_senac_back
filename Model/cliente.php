@@ -75,7 +75,7 @@ class cliente
 		}
 	}
 
-	public function Editar($data)
+	public function Editar($id_editar)
 	{
 		try
 		{
@@ -101,16 +101,17 @@ class cliente
                         $this->nomeFantasia,
                         $this->razaoSocial,
                         $this->cnpj,
-						$this->$inscEstadual,
-						$this->$endereco,
-						$this->$bairro,
-						$this->$cidade,
-						$this->$cep,
-						$this->$uf,
-						$this->$telefoneFixo,
-						$this->$dataCadastro,
-						$this->$dataCadastroExtendida,
-						$this->$observacao,
+						$this->inscEstadual,
+						$this->endereco,
+						$this->bairro,
+						$this->cidade,
+						$this->cep,
+						$this->uf,
+						$this->telefoneFixo,
+						$this->dataCadastro,
+						$this->dataCadastroExtendida,
+						$this->observacao,
+						$id_editar
 					)
 				);
 		} catch (Exception $e)
