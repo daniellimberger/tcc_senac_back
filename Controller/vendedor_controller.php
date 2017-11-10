@@ -56,6 +56,9 @@ class VendedorController{
         $cep              = $obj->cep;
         $uf               = $obj->uf;
         $dataCadastro     = $obj->dataCadastro;
+        $tipo             = $obj->tipo;
+        $login            = $obj->login;
+        $senha            = $obj->senha;
         $observacao       = $obj->observacao;
 
 
@@ -75,6 +78,9 @@ class VendedorController{
         $vend->cep = $cep;
         $vend->uf = $uf;
         $vend->dataCadastro = $dataCadastro; 
+        $vend->tipo = $tipo;
+        $vend->login = $login;
+        $vend->senha = $senha;
         $vend->observacao = $observacao;         
 
 
@@ -106,6 +112,9 @@ class VendedorController{
         $cep              = $obj->cep;
         $uf               = $obj->uf;
         $dataCadastro     = $obj->dataCadastro;
+        $tipo             = $obj->tipo;
+        $login            = $obj->login;
+        $senha            = $obj->senha;
         $observacao       = $obj->observacao;
         $id_editar        = $obj->id_editar;
 
@@ -125,6 +134,9 @@ class VendedorController{
         $vend->cep = $cep;
         $vend->uf = $uf;
         $vend->dataCadastro = $dataCadastro; 
+        $vend->tipo = $tipo;
+        $vend->login = $login;
+        $vend->senha = $senha;
         $vend->observacao = $observacao;     
 
         $vend->Editar($id_editar);

@@ -16,6 +16,9 @@ class vendedor
       public $cep;
       public $uf;
       public $dataCadastro;
+      public $tipo;
+      public $login;
+      public $senha;
       public $observacao;
 
 
@@ -94,6 +97,9 @@ class vendedor
             			cep           = ?,
             			uf            = ?,
             			data_cadastro = ?,
+            			tipo          = ?,
+            			login 		  = ?,
+            			senha 		  = ?,
             			observacao    = ?
 				    WHERE id = ?";
 
@@ -112,6 +118,9 @@ class vendedor
 					$this->cep,
                     $this->uf,
 					$this->dataCadastro,
+					$this->tipo,
+					$this->login,
+					$this->senha,
                     $this->observacao,
                     $id_editar
 					)
@@ -127,8 +136,8 @@ class vendedor
 	{
 		try
 		{
-		$sql = "INSERT INTO vendedor (nome, sobrenome, rg, cpf, telefone_fixo, telefone_celular, endereco, bairro, cidade, cep, uf, data_cadastro, observacao)
-		        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		$sql = "INSERT INTO vendedor (nome, sobrenome, rg, cpf, telefone_fixo, telefone_celular, endereco, bairro, cidade, cep, uf, data_cadastro, tipo, login, senha, observacao)
+		        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		$this->pdo->prepare($sql)
 		     ->execute(
@@ -145,6 +154,9 @@ class vendedor
 					$this->cep,
                     $this->uf,
 					$this->dataCadastro,
+					$this->tipo,
+					$this->login,
+					$this->senha,
                     $this->observacao
                 )
 			);

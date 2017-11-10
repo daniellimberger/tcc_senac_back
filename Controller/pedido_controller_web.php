@@ -18,7 +18,7 @@ class PedidoController{
     $headers .= "Content-type: text/html; charset=UTF-8\r\n";
     $headers .= "From: ligiano@ligiano.info\r\n"; // remetente
     $headers .= "Return-Path: ligiano@ligiano.info\r\n"; // return-path
-    $send = mail("ldaazzi@gmail.com", "SisDis - Pedido via sistema", $html_pedido, $headers);
+    $send = mail("greffdistribuidora@gmail.com", "SisDis - Pedido via sistema", $html_pedido, $headers);
 
     if ( $send ){
 
