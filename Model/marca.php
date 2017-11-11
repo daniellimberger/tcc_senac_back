@@ -36,5 +36,24 @@ class marca
 		}
 	}
 
+	public function Cadastrar()	
+	{
+		try
+		{
+		$sql = "INSERT INTO produto_marca (nome)
+		        VALUES (?)";
+
+		$this->pdo->prepare($sql)
+		     ->execute(
+				array(
+					$this->nome
+                )
+			);
+		} catch (Exception $e)
+		{
+			die($e->getMessage());
+		}
+	}	
+
 
 }
