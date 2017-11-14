@@ -26,7 +26,7 @@ class login
 			$result = array();
 
 			$stm = $this->pdo->prepare(
-				"SELECT vend.id as vendedor_id, vend.login, vend.senha, vend.tipo as tipo_user FROM vendedor vend
+				"SELECT vend.id as vendedor_id, vend.login, vend.senha, vend.tipo as tipo_user, vend.nome, vend.sobrenome FROM vendedor vend
 					WHERE login = ?
 					AND senha = ?
 				");
