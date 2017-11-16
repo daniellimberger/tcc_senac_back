@@ -9,11 +9,21 @@ $function = $_GET['function'];
 
 switch ( $function ){
   case 'listar_todos_pedido':
-    $retorno = $pedidoController->listar_todos_pedido();
+
+
+    $obj = json_decode(file_get_contents('php://input'));
+    $idVendedor = $obj->idVendedor;
+    $tipoUser = $obj->tipoUser;
+
+    
+    
+    $retorno = $pedidoController->listar_todos_pedido($idVendedor, $tipoUser);
     break;
 
   case 'listar_todos_pedidoItem':
+
     $retorno = $pedidoController->listar_todos_pedidoItem();
+
     break;
 
   case 'deletar_pedido_item':
@@ -133,9 +143,9 @@ class PedidoController{
     }   
 
     
-    public function listar_todos_pedido(){
+    public function listar_todos_pedido($idVendedor, $tipoUser){
 
-       $dados = $this->model->ListarTodosPedido();
+       $dados = $this->model->ListarTodosPedido($idVendedor, $tipoUser);
 
        return  json_encode($dados);
     }    
